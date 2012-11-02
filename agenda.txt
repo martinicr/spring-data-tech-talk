@@ -7,7 +7,15 @@ AGENDA:
 	2.3 NoSQL for Java Developers (here I need to mention the 4 existing types of NoSQL databases) (5min)
 3. Repositories (5 min)
 4. JPA -> Quick sample (5 min) 
-5. MongoDB (25 min)
+5. Spring Data support for MongoDB (25 min)
 	5.1 Introduction 
 	5.2 Using the driver 
 	5.3 Using Spring Data 
+
+
+References
+
+http://www.slideshare.net/dgomezg/spring-data-y-mongo-db-en-un-proyecto-real
+Everyday MongoDB: http://www.slideshare.net/adorepump/everyday-mongodb
+Why we choose MongoDB: http://www.slideshare.net/tackers/why-we-chose-mongodb-for-guardiancouk (Este es un caso de estudio del periodico The Guardian de Inglaterra uno de los mas grandes)
+Introduction to MongoDB and Spring Data: http://www.youtube.com/watch?v=76jCKfW2Mr8&list=UU7yfnfvEUlXUIfm8rGLwZdA&index=22&feature=plcp
