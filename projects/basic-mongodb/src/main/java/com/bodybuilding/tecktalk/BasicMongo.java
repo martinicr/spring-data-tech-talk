@@ -81,9 +81,6 @@ public class BasicMongo {
 	
 	private static DBObject fromCustomerToDBObject(Customer customer) {
 		DBObject customerDoc = new BasicDBObject();
-		/*if(!StringUtils.isEmpty(customer.getId())){
-			customerDoc.put("id", new ObjectId(customer.getId()));
-		}*/
 		customerDoc.put("firstname", customer.getFirstname());
 		customerDoc.put("lastname", customer.getLastname());
 		
