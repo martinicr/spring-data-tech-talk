@@ -3,14 +3,8 @@
  */
 package com.bodybuilding.tecktalk.domain;
 
-import java.math.BigInteger;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-
-import org.bson.BSONObject;
-
-import com.mongodb.DBObject;
 
 
 /**
