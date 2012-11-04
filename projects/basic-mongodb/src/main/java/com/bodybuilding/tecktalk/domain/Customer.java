@@ -3,6 +3,7 @@
  */
 package com.bodybuilding.tecktalk.domain;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -18,7 +19,7 @@ import com.mongodb.DBObject;
  */
 public class Customer {
 	
-	private Long id;
+	private String id;
 	private String firstname;
 	private String lastname;
 	private EmailAddress emailAddress;
@@ -32,11 +33,11 @@ public class Customer {
 		this.lastname = lastname;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
