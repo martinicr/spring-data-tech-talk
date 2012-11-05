@@ -24,4 +24,6 @@ public interface CustomerDAO {
 
 	Customer update(Customer customer);
 
+	List<Customer> findByQuery(String json);
+
 }

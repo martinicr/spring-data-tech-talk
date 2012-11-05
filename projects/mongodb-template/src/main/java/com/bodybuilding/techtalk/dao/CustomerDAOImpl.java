@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -57,5 +58,15 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		return mongoTemplate.findAndModify(query, update, new FindAndModifyOptions().returnNew(true), Customer.class);
 	}
+
+	@Override
+	public List<Customer> findByQuery(String json) {
+		
+		BasicQuery query = new BasicQuery(json); 
+		
+		return mongoTemplate.find(query, Customer.class);
+	}
+	
+	
 
 }

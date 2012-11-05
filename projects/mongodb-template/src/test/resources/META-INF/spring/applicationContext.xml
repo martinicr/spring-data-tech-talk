@@ -21,8 +21,5 @@
 		<constructor-arg ref="mongoDBFactory" />
 	</bean>
 	
-<!-- 	<bean id="customerDAO" class="com.bodybuilding.tecktalk.dao.CustomerDAOImpl">
-		<property name="mongoTemplate" ref="mongoTemplate" />
-	</bean> -->
 
 </beans>

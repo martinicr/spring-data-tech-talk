@@ -83,7 +83,7 @@ public class CustomerDAOTest {
 	}
 	
 	@Test
-	public void TestUpdateCustomer(){
+	public void testUpdateCustomer(){
 		
 		Address address = new Address("1st Street", "Miami", "USA");
 		Set<Address> addresses = new HashSet<Address>();
@@ -100,6 +100,39 @@ public class CustomerDAOTest {
 		
 		assertThat(updated, is(not(nullValue())));
 		assertThat(updated.getEmailAddress().toString(), is("new@email.com"));
+	}
+	
+	@Test
+	public void testFindByJSONQuery(){
+		
+		Set<Address> usaAddresses = new HashSet<Address>();
+		Set<Address> ukAddresses = new HashSet<Address>();
+		Address usaAddress = new Address("1st Street", "Miami", "USA");
+		Address ukAddress = new Address("Some Port", "Liverpool", "UK");
+		usaAddresses.add(usaAddress);		
+		ukAddresses.add(ukAddress);
+		
+		Customer c1 = new Customer("John", "Doe");
+		c1.setAddresses(usaAddresses);
+		c1.setEmailAddress(new EmailAddress("john@doe.com"));
+		
+		Customer c2 = new Customer("Maria", "Jones");
+		c2.setAddresses(usaAddresses);
+		c2.setEmailAddress(new EmailAddress("maria@jones.com"));
+		
+		Customer c3 = new Customer("Jack", "Sparrow");
+		c3.setAddresses(ukAddresses);
+		c3.setEmailAddress(new EmailAddress("jack@sparrow.com"));
+		
+		customerDAO.save(c1);
+		customerDAO.save(c2);
+		customerDAO.save(c3);
+		
+		String query  = "{\"addresses.country\" : \"USA\"}";
+		List<Customer> customers = customerDAO.findByQuery(query);
+		
+		assertThat(customers, is(not(nullValue())));
+		assertThat(customers.size(), is(2));
 	}
 
 }
