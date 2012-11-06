@@ -1,5 +1,6 @@
 workspace/*
 *.project
 *.classpath
+*.springBeans
 .settings/
 target/
