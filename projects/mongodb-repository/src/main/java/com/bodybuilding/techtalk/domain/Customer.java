@@ -1,26 +1,31 @@
 /**
  * 
  */
-package com.bodybuilding.tecktalk.domain;
+package com.bodybuilding.techtalk.domain;
 
+import java.math.BigInteger;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-import org.bson.BSONObject;
-
-import com.mongodb.DBObject;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 
 /**
  * @author martin
  *
  */
+@Document(collection="customers")
 public class Customer {
 	
-	private Long id;
+	@Id
+	private BigInteger id;
+	
 	private String firstname;
 	private String lastname;
+	
 	private EmailAddress emailAddress;
 	private Set<Address> addresses = new HashSet<Address>();
 	
@@ -32,11 +37,11 @@ public class Customer {
 		this.lastname = lastname;
 	}
 
-	public Long getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 

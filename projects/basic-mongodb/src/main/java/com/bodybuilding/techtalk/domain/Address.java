@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bodybuilding.tecktalk.domain;
+package com.bodybuilding.techtalk.domain;
 
 /**
  * @author martin

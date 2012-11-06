@@ -1,0 +1,83 @@
+Ejemplo MongoDB Java Driver:
+
+1. Mostrar metodo findAll();
+
+	@Test
+	public void testFindAllCustomers() throws Exception{
+	
+		BasicMongo mongo = new BasicMongo();
+		mongo.connect();
+		
+		Address address = new Address("1st Street", "Miami", "USA");
+		Set<Address> addresses = new HashSet<Address>();
+		addresses.add(address);
+		
+		Customer c1 = new Customer("John", "Doe");
+		c1.setAddresses(addresses);
+		c1.setEmailAddress(new EmailAddress("john@doe.com"));
+		
+		Customer c2 = new Customer("Maria", "Doe");
+		c2.setAddresses(addresses);
+		c2.setEmailAddress(new EmailAddress("maria@doe.com"));
+		
+		mongo.save(c1);
+		mongo.save(c2);
+		
+		List<Customer> customers = mongo.findAllCustomers();
+		
+		assertThat(customers, is(not(nullValue())));
+		assertThat(customers, is(not(Collections.EMPTY_LIST)));
+		assertThat(customers.size(), is(2));
+	}
+
+
+2. Crear metodos setUp() y tearDown()
+
+2.1 Promover BasicMongo a un field de clase
+
+2.2 Crear metodo setUp()
+	@Before
+	public void setUp(){
+		mongo = new BasicMongo();
+	}
+
+2.3 Crear metodo tearDown()
+	@After
+	public void tearDown(){
+		mongo.removeAll();
+	}
+
+2.4 Crear metodo removeAll() en BasicMongo
+	public void removeAll() {
+		db.dropDatabase();
+	}
+
+3. Buscar por nombre
+3.1 Crear el metodo en el BasicMongoTest
+	@Test
+	public void testFindCustomerByName() throws Exception{
+		
+		Address address = new Address("1st Street", "Miami", "USA");
+		Set<Address> addresses = new HashSet<Address>();
+		addresses.add(address);
+		
+		Customer c1 = new Customer("John", "Doe");
+		c1.setAddresses(addresses);
+		c1.setEmailAddress(new EmailAddress("john@doe.com"));
+		
+		Customer c2 = new Customer("Maria", "Doe");
+		c2.setAddresses(addresses);
+		c2.setEmailAddress(new EmailAddress("maria@doe.com"));
+		
+		mongo.save(c1);
+		mongo.save(c2);
+		
+		Customer customer = mongo.findCustomerByName("Maria");
+		
+		assertThat(customer, is(not(nullValue())));
+		assertThat(customer.getFirstname(), is("Maria"));
+		assertThat(customer.getLastname(), is("Doe"));
+	}
+
+
+

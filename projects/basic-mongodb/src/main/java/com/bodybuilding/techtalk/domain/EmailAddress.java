@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bodybuilding.tecktalk.domain;
+package com.bodybuilding.techtalk.domain;
 
 import java.util.regex.Pattern;
 
@@ -15,11 +15,11 @@ public class EmailAddress {
 	private static final String EMAIL_REGEX = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private static final Pattern PATTERN = Pattern.compile(EMAIL_REGEX);
 
-	private final String value;
+	private final String email;
 
-	public EmailAddress(String emailAddress) {
+	public EmailAddress(String email) {
 		
-		this.value = emailAddress;
+		this.email = email;
 	}
 
 	public static boolean isValid(String candidate) {
@@ -28,7 +28,7 @@ public class EmailAddress {
 
 	@Override
 	public String toString() {
-		return value;
+		return email;
 	}
 
 	@Override
@@ -43,12 +43,12 @@ public class EmailAddress {
 		}
 
 		EmailAddress that = (EmailAddress) obj;
-		return this.value.equals(that.value);
+		return this.email.equals(that.email);
 	}
 
 	@Override
 	public int hashCode() {
-		return value.hashCode();
+		return email.hashCode();
 	}
 
 }
