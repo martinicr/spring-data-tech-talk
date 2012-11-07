@@ -4,10 +4,12 @@
 package com.bodybuilding.techtalk.domain;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.Assert;
@@ -19,6 +21,8 @@ import org.springframework.util.Assert;
 @Document
 public class Product {
 	
+	@Id
+	private BigInteger id;
 	private String name;
 	private String description;
 	private BigDecimal price;
@@ -31,13 +35,6 @@ public class Product {
 		this(name, price, null);
 	}
 
-	/**
-	 * Creates a new {@link Product} from the given name and description.
-	 * 
-	 * @param name must not be {@literal null} or empty.
-	 * @param price must not be {@literal null} or less than or equal to zero.
-	 * @param description
-	 */
 	@PersistenceConstructor
 	public Product(String name, BigDecimal price, String description) {
 
@@ -58,6 +55,14 @@ public class Product {
 		} else {
 			this.attributes.put(name, value);
 		}
+	}
+
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
 	}
 
 	public String getName() {
