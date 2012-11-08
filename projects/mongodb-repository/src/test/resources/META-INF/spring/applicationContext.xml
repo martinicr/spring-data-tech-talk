@@ -21,7 +21,6 @@
 	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongoDBFactory" />
-	</bean>
-	
+	</bean>	
 
 </beans>

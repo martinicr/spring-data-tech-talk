@@ -3,7 +3,7 @@
  */
 package com.bodybuilding.techtalk.repository.custom;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.Repository;
 
 import com.bodybuilding.techtalk.domain.Customer;
 
@@ -11,7 +11,7 @@ import com.bodybuilding.techtalk.domain.Customer;
  * @author martin
  *
  */
-public interface CustomerRepositoryCustom extends CrudRepository<Customer, Long>, MyCustom {
+public interface CustomerRepositoryCustom extends Repository<Customer, Long>, MyCustom {
 	
 
 }
