@@ -31,23 +31,10 @@ public class Order {
 	private Address shippingAddress;
 	private Set<LineItem> lineItems = new HashSet<LineItem>();
 
-	/**
-	 * Creates a new {@link Order} for the given {@link Customer}.
-	 * 
-	 * @param customer must not be {@literal null}.
-	 * @param shippingAddress must not be {@literal null}.
-	 */
 	public Order(Customer customer, Address shippingAddress) {
 		this(customer, shippingAddress, null);
 	}
 
-	/**
-	 * Creates a new {@link Order} for the given {@link Customer}, shipping and billing {@link Address}.
-	 * 
-	 * @param customer must not be {@literal null}.
-	 * @param shippingAddress must not be {@literal null}.
-	 * @param billingAddress can be {@literal null}.
-	 */
 	@PersistenceConstructor
 	public Order(Customer customer, Address shippingAddress, Address billingAddress) {
 
