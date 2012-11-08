@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bodybuilding.techtalk.repository;
+package com.bodybuilding.techtalk.repository.custom;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
