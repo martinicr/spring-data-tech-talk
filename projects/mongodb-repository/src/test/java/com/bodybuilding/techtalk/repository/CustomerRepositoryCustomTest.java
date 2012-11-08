@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bodybuilding.techtalk.domain.Address;
 import com.bodybuilding.techtalk.domain.Customer;
 import com.bodybuilding.techtalk.domain.EmailAddress;
+import com.bodybuilding.techtalk.repository.custom.CustomerRepositoryCustom;
 
 /**
  * @author martin
@@ -30,7 +31,6 @@ import com.bodybuilding.techtalk.domain.EmailAddress;
 public class CustomerRepositoryCustomTest {
 	
 	@Autowired
-	@Qualifier("custom")
 	CustomerRepositoryCustom custom;
 	
 	Customer c1;
@@ -58,6 +58,8 @@ public class CustomerRepositoryCustomTest {
 		assertThat(newCustomer, is(not(nullValue())));
 		assertThat(newCustomer.getFirstname(), is("John"));
 		assertThat(newCustomer.getLastname(), is("Jonathan"));
+		
+		custom.printSomeMessage();
 	}
 
 }
