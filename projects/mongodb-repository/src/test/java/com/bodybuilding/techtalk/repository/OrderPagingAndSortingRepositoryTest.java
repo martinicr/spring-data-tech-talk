@@ -8,12 +8,15 @@ import static org.hamcrest.Matchers.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -91,13 +94,14 @@ public class OrderPagingAndSortingRepositoryTest {
 		
 		orderRepository.save(order);
 		
-		for(LineItem item : order.getLineItems()){
-			System.out.println(item.getProduct().getName());
-		}
+		Page<Order> page0 = orderRepository.findAll(new PageRequest(0, 10));
 		
-		assertThat(order.getCustomer(), is(not(nullValue())));
-		assertThat(order.getCustomer().getFirstname(), is("John"));
-		assertThat(order.getLineItems().size(), is(2));
+		List<Order> orders = page0.getContent();
+		
+		
+		assertThat(orders.get(0).getCustomer(), is(not(nullValue())));
+		assertThat(orders.get(0).getCustomer().getFirstname(), is("John"));
+		assertThat(orders.get(0).getLineItems().size(), is(2));
 	}
 
 }
