@@ -137,6 +137,30 @@ public class CustomerCrudRepositoryTest {
 		assertThat(found, is(not(nullValue())));
 		assertThat(found.getEmailAddress().toString(), is("maria@doe.com"));
 	}
+	
+	@Test
+	public void testFindByQueryEmailAddress(){
+		
+		Address address = new Address("1st Street", "Miami", "USA");
+		Set<Address> addresses = new HashSet<Address>();
+		addresses.add(address);
+		
+		Customer c1 = new Customer("John", "Doe");
+		c1.setAddresses(addresses);
+		c1.setEmailAddress(new EmailAddress("john@doe.com"));
+		
+		Customer c2 = new Customer("Maria", "Doe");
+		c2.setAddresses(addresses);
+		c2.setEmailAddress(new EmailAddress("maria@doe.com"));
+		 
+		crud.save(c1);
+		crud.save(c2);
+		
+		Customer found = crud.findByEmailAddress("maria@doe.com");
+		
+		assertThat(found, is(not(nullValue())));
+		assertThat(found.getEmailAddress().toString(), is("maria@doe.com"));
+	}
 
 	@Test
 	public void testFindByLastnameLike(){
